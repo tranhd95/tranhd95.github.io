@@ -1,0 +1,179 @@
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #a-value, #b-value {
+        display: inline-block;
+        width: 20px;
+        text-align: right; 
+        font-family: monospace;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+
+<div class="container">
+    <div>
+      <div id="a-slider" style="display:inline-block;"><span class="mono">m = </span></div>
+      <span id="a-value"></span>
+    </div>
+    <div>
+      <div id="b-slider" style="display:inline-block;"><span class="mono">c = </span></div>
+      <span id="b-value"></span>
+    </div>
+    <div id="sketch-container"></div>
+    <div id="checkbox"></div>
+  </div>
+
+<script>
+    let sliderA, sliderB;
+    let points = [];
+    let showErrorLinesCheckbox;
+
+    // Adjust these for your plotting range:
+    const xMin = -1, xMax = 25;
+    const yMin = -1, yMax = 25;
+
+    function setup() {
+        // Create canvas inside container
+        let canvas = createCanvas(400, 400);
+        canvas.parent("sketch-container");
+        
+        // Generate random data points near a known line (y = 0.5x + 2)
+        for (let i = 5; i < 25; i += 2) {
+            let x = i;
+            let y = 0.3 * x + 6 + random(-3, 3); // add slight noise
+            points.push({x, y});
+        }
+        
+        // Create slope slider
+        sliderA = createSlider(-0.5, 10, 1.00, 0.01);
+        sliderA.parent("a-slider");
+        
+        // Create intercept slider
+        sliderB = createSlider(-1, 15, 0.00, 0.01);
+        sliderB.parent("b-slider");
+
+        // Create the checkbox (by default, unchecked).
+        showErrorLinesCheckbox = createCheckbox('Show distances from dots', false);
+        // Attach it to some container. Adjust as needed:
+        showErrorLinesCheckbox.parent("checkbox");
+    }
+
+    function draw() {
+        background(255);
+        
+        // Draw grid and axes first
+        drawGridAndAxes();
+
+        let a = sliderA.value(); // slope
+        let b = sliderB.value(); // intercept
+        document.querySelector("#a-value").textContent = a;
+        document.querySelector("#b-value").textContent = b;
+ 
+        // Compute line endpoints based on our domain
+        let x1 = xMin;
+        let y1 = a * x1 + b;
+        let x2 = xMax;
+        let y2 = a * x2 + b;
+        
+        // Map line endpoints to canvas
+        let px1 = map(x1, xMin, xMax, 0, width);
+        let py1 = map(y1, yMin, yMax, height, 0);
+        let px2 = map(x2, xMin, xMax, 0, width);
+        let py2 = map(y2, yMin, yMax, height, 0);
+        
+        
+        // Calculate total (squared) error
+        let totalError = 0;
+        for (let pt of points) {
+            let prediction = a * pt.x + b;
+            let residual = pt.y - prediction;
+            totalError += residual * residual;
+        }
+        
+        // Display slope, intercept, and total error
+        noStroke();
+        fill(0);
+        textSize(24);
+        text(`y = ${nf(a,1,2)}x + ${nf(b,1,2)}`, 30, 30);
+        text('y', 0, 200);
+        text('x', 200, 380);
+        // Only show dashed lines + error text if checkbox is checked
+        if (showErrorLinesCheckbox.checked()) {
+            // 1) Draw dashed red lines from each point to the line
+            stroke('red');
+            strokeWeight(2);
+            drawingContext.setLineDash([5, 5]); // [dashLength, gapLength]
+            
+            for (let pt of points) {
+                let px = map(pt.x, xMin, xMax, 0, width);
+                let py = map(pt.y, yMin, yMax, height, 0);
+                let predictedY = a * pt.x + b;
+                let pyPred = map(predictedY, yMin, yMax, height, 0);
+                line(px, py, px, pyPred);
+            }
+            
+            // Reset line dash so further drawing is not dashed
+            drawingContext.setLineDash([]);
+
+            // 2) Show the total error text
+            noStroke();
+            fill(0);
+            textSize(18);
+            text(`Sum of distances: ${nf(totalError,1,2)}`, 30, 60);
+        }
+
+
+        // Draw data points
+        fill(102, 102, 102);
+        noStroke();
+        for (let pt of points) {
+            let px = map(pt.x, xMin, xMax, 0, width);
+            let py = map(pt.y, yMin, yMax, height, 0);
+            ellipse(px, py, 15, 15);
+        }
+
+        // Draw the fitted line
+        stroke(145, 19, 13);
+        strokeWeight(5);
+        line(px1, py1, px2, py2);
+
+        
+    }
+
+    // Helper to draw a simple grid and x/y axes
+    function drawGridAndAxes() {
+        stroke(220);
+        strokeWeight(1);
+        
+        // Vertical grid lines
+        for (let x = 0; x < xMax; x += 5) {
+            let gx = map(x, xMin, xMax, 0, width);
+            line(gx, 0, gx, height);
+        }
+        
+        // Horizontal grid lines
+        for (let y = 0; y < yMax; y += 5) {
+            let gy = map(y, yMin, yMax, height, 0);
+            line(0, gy, width, gy);
+        }
+        
+        // Draw axes in black
+        stroke(102, 102, 102);
+        strokeWeight(5);
+        
+        // x-axis (if it’s in range)
+        if (yMin <= 0 && yMax >= 0) {
+            let py0 = map(0, yMin, yMax, height, 0);
+            line(0, py0, width, py0);
+        }
+
+        // y-axis (if it’s in range)
+        if (xMin <= 0 && xMax >= 0) {
+            let px0 = map(0, xMin, xMax, 0, width);
+            line(px0, 0, px0, height);
+        }
+    }
+</script>

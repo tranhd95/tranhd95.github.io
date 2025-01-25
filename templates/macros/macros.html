@@ -115,16 +115,16 @@
                     {% endif %}
 
                     {% if page.updated %}
-                        :: Updated on <time>{{ page.updated | date(format="%Y-%m-%d") }}</time>
+                        / Updated on <time>{{ page.updated | date(format="%Y-%m-%d") }}</time>
                     {% endif %}
 
                     {% if page.extra.read_time %}
-                        :: <time>{{ page.reading_time }}</time> Min Read
+                        / <time>{{ page.reading_time }}</time> Min Read
                     {% endif %}
 
                     {# Inline display of tags directly after the date #}
                     {% if page.taxonomies and page.taxonomies.tags %}
-                            <span class="tags-label"> :: Tags:</span>
+                            <span class="tags-label"> / Tags:</span>
                             <span class="tags">
                                 {%- for tag in page.taxonomies.tags %}
                                     <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=page.lang) }}" class="post-tag">{{ tag }}</a>{% if not loop.last %}, {% endif %}
