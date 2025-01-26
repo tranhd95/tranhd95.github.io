@@ -1,5 +1,6 @@
 +++
 title = "AI Assistants: Visually Explained"
+description = "Visual guide to AI assistants and LLMs."
 date = "2025-01-25"
 updated = "2025-01-25"
 
@@ -68,7 +69,15 @@ you've used a chatbot before and are familiar with basic geometry.
 The backbone of AI assistants are *language models*. What exactly are they? It's simple: language models 
 **just predict the next word of a text sequence**.
 
-<img alt="Language Model predicts the next word" class="freezeframe" src="/animations/next_word_prediction.webp" />
+<img 
+  srcset="/animations/next_word_prediction_500px.webp 500w,
+          /animations/next_word_prediction.webp 1000w"
+  sizes="(max-width: 600px) 500px,
+         1000px"
+  src="/animations/next_word_prediction.webp"
+  alt="Language Model predicts the next word."
+  class="freezeframe"
+/>
 
 Well, not really. It's more precise to say that a language model **assigns probabilities to every potential 
 next word in the sequence**. In fact, this is why they are called "language models" - they model the language 
@@ -78,7 +87,7 @@ So how exactly is this useful? The most straightforward application of a languag
 be seen in your smartphone. Most modern smartphones have a feature where your keyboard suggests potential next 
 words as you type. In this case, it makes sense to suggest the most likely words that could follow your text.
 
-<img alt="Language model in smartphone's predictive keyboard." class="freezeframe" src="/animations/smartphone.webp" />
+<img alt="Language model in smartphone's predictive keyboard." class="freezeframe" src="/animations/keyboard.webp" />
 
 ### But how do we create such models?
 Let's start with a simple example. Imagine we want to help entrepreneurs decide where to open new coffee shops. We could look at different cities, 
@@ -126,7 +135,15 @@ minimize the distances between our dots and the line, **we try to minimize how w
 actually came next - in this case "*much*" - and adjust its parameters slightly. **By repeatedly showing the model examples 
 like this, we gradually tune its parameters so it learns to predict sensible continuations instead of random words.**
 
-<img alt="Training process of neural network language model." class="freezeframe" src="/animations/training.webp" />
+<img 
+  srcset="/animations/training_500px.webp 500w,
+          /animations/training.webp 1000w"
+  sizes="(max-width: 600px) 500px,
+         1000px"
+  src="/animations/training.webp"
+  alt="Training process of neural network language model."
+  class="freezeframe"
+/>
 
 So how many examples do we need to train a good language model? We're talking about **hundreds of billions** of words from webpages, books, 
 articles, and other sources. Processing this much data and at this scale requires extremely powerful computers, which is why training these 
@@ -143,7 +160,15 @@ no "human-thinking" is done inside the model.
 To generate a longer text with a language model, we start with some input text and let the model predict one word at a time. Each predicted word 
 gets added to our text, and we ask for another prediction. Repeat this process, and you'll get a complete sentence or even a paragraph.
 
-<img alt="Autoregressive generation of language model." class="freezeframe" src="/animations/autoregressive.webp" />
+<img 
+  srcset="/animations/autoregressive_500px.webp 500w,
+          /animations/autoregressive.webp 1000w"
+  sizes="(max-width: 600px) 500px,
+         1000px"
+  src="/animations/autoregressive.webp"
+  alt="Autoregressive generation of language model."
+  class="freezeframe"
+/>
 
 If you've ever played with your phone's keyboard suggestions, tapping only the suggested words, you know you can create some funny but mostly 
 nonsensical sentences. Similarly, a freshly trained language model can only do simple text completion. Type "*Hey,*" and it might suggest "*what's up?*" - 
@@ -185,7 +210,15 @@ Here's what happens behind the scenes when you use a chat interface:
 3. Then the app uses the language model to generate the response word by word.
 4. When it generates the <span class='mono'>[STOP_SIGNAL]</span>, the response is complete.
 
-<img alt="What AI assistants do in the background with the chat conversation." class="freezeframe" src="/animations/chat.webp" />
+<img 
+  srcset="/animations/chat_500px.webp 500w,
+          /animations/chat.webp 1000w"
+  sizes="(max-width: 600px) 500px,
+         1000px"
+  src="/animations/chat.webp"
+  alt="What AI assistants do in the background with the chat conversation."
+  class="freezeframe"
+/>
 
 And that's pretty much it. The **extra abilities - like searching the web or using external tools - are just clever “behind-the-scenes” 
 integrations that feed relevant results back to the model**. Handling images or audio, on the other hand, often involves specialized systems 

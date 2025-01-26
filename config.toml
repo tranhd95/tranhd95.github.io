@@ -15,7 +15,7 @@ include_content = true
 index_format = "elasticlunr_json"
 
 [markdown]
-highlight_code = true
+highlight_code = false
 highlight_theme = "ayu-light"
 
 [extra]
@@ -23,8 +23,8 @@ toc = false
 use_cdn = false
 favicon = "/icon/favicon.png"
 theme = "light"              # light, dark, auto, toggle
-fancy_code = true
-dynamic_note = true           # a note that can be toggled
+fancy_code = false
+dynamic_note = false           # a note that can be toggled
 mathjax = true
 mathjax_dollar_inline_enable = true
 
