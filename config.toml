@@ -1,7 +1,7 @@
-base_url = "https://tranhd95.github.io"
+base_url = "https://blog.tranhd.eu/"
 title = "Hai Duong Tran"
 description = "Hai Duong Tran"
-build_search_index = true
+build_search_index = false
 generate_feeds = true
 compile_sass = true
 minify_html = true
@@ -30,14 +30,14 @@ mathjax_dollar_inline_enable = true
 
 menu = [
     { name = "/posts", url = "/posts", weight = 1 },
-    { name = "/projects", url = "/projects", weight = 2 },
-    { name = "/about", url = "/about", weight = 3 },
-    { name = "/tags", url = "/tags", weight = 4 },
+    { name = "/about", url = "/about", weight = 2 },
 ]
 
 socials = [
     { name = "github", url = "https://github.com/tranhd95/", icon = "github" },
     { name = "twitter", url = "https://x.com/PhoBoAI", icon = "twitter" },
+    { name = "linkedin", url = "https://www.linkedin.com/in/hai-duong-tran/", icon = "linkedin" },
+    { name = "discord", url = "https://discordapp.com/users/451786108578299915", icon = "discord" },
 ]
 
 custom_css = []

@@ -1,8 +1,10 @@
 +++
-title= "Apollo Theme"
+title= "My Personal Brain Dump"
 template = "homepage.html"
 +++
 
-Thanks for checking out this theme!
+Hey! I'm Duong, but folks call me Čan (sounds like "Chan"). Based in Brno, Czech Republic, I work as a LLM researcher at Seznam.cz where I focus on improving Czech language capabilities of LLMs.
 
-Checkout all the [options you can configure](./posts/configuration) and the [example pages](./tags/example/).
+**Read my posts:**
+
+- [AI Asisstants: Visually Explained](/posts/ai-assistants-visually-explained)

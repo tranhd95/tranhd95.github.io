@@ -1,7 +1,7 @@
 +++
 title = "AI Assistants: Visually Explained"
-date = "2025-01-06"
-updated = "2025-01-16"
+date = "2025-01-25"
+updated = "2025-01-25"
 
 [taxonomies]
 tags=["llm"]
@@ -9,13 +9,27 @@ tags=["llm"]
 comment = false
 +++
 <style>
-img {border: 0; margin: 0 auto; display: block;} 
-.freezeframe:hover {cursor: pointer} 
-html {scroll-behavior: smooth;}
-.mono {font-family: monospace}
-ol > li {
-  margin-top: 0.25rem;
-}
+  img {
+    border: 0; 
+    margin: 0 auto; 
+    display: block;
+  } 
+
+  .freezeframe:hover {
+    cursor: pointer
+  } 
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .mono {
+    font-family: monospace;
+  }
+
+  ol > li {
+    margin-top: 0.25rem;
+  }
 </style>
 
 <!-- Add this to your head section or create a separate JS file -->
@@ -61,9 +75,9 @@ next word in the sequence**. In fact, this is why they are called "language mode
 by predicting which words are likely to follow others.
 
 <!-- ![Language Model assign probabilities to potential next words](/animations/language_modelling.webp) -->
-<img id="language-modelling" class="freezeframe" src="/animations/language_modelling.webp" />
+<!-- <img id="language-modelling" class="freezeframe" src="/animations/language_modelling.webp" /> -->
 
-So how exactly is this useful? The most straightforward application of a language model in its pure form can 
+So how exactly is this useful? The most straightforward application of a language model in its raw form can 
 be seen in your smartphone. Most modern smartphones have a feature where your keyboard suggests potential next 
 words as you type. In this case, it makes sense to suggest the most likely words that could follow your text.
 
@@ -189,12 +203,25 @@ about how these systems work in more details.
 
 Topics that I might cover:
 
-- Tokenization and context length
+- Tokens, vocabulary and context length
 - Sampling parameters
 - Roles (system, user, assistant, ...?)
 - Function calling / Tool use
 - ... your suggestions?
 
+### Acknowledgments and further reading (watching)
+
+For those familiar with AI, you may know [Jay Alammar's excellent blog](https://jalammar.github.io/about/) which clearly inspired this post. I recommend 
+this post for deeper learning:
+
+  - [A Visual and Interactive Guide to the Basics of Neural Networks](https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/)
+    - I later discovered Jay had already used the line-fitting analogy in his post.
+    - His guide offers detailed and interactive insights into the learning process.
+
+And if you prefer videos, you can watch these:
+
+  - [3Blue1Brown's Large Language Models explained briefly](https://www.youtube.com/watch?v=LPZh9BOjkQs), or
+  - [1 hour long Andrej Karpathy's Intro to Large Language Models](https://youtu.be/zjkBMFhNj_g)
 ---
 
 ### Footnotes
