@@ -49,5 +49,5 @@ enabled = true
 #user = "your_user"
 #host = "example.com" # default= goatcounter.com
 
-#[extra.analytics.umami]
+[extra.analytics.umami]
 website_id = "231b2149-7c2a-4915-a8ae-a9b22e99a057"
