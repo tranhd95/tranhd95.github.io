@@ -43,7 +43,7 @@ socials = [
 custom_css = []
 
 [extra.analytics]
-enabled = false
+enabled = true
 
 #[extra.analytics.goatcounter]
 #user = "your_user"
