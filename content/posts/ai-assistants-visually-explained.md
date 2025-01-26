@@ -226,8 +226,8 @@ And if you prefer videos, you can watch these:
   <li id="fn-1">
     <ul style="padding-left: 0.5rem; list-style: none">
       <li>If we use slightly different distances than visualized - <a href="https://byam.github.io/assets/img/model-eval-val/mean-squared-error.png">the squared errors</a>, we are able to derive two "simple" formulas for ideal $m$ and $c$ beforehand:</li>
-      <li>$m = (n\sum x_iy_i - \sum x_i\sum y_i)/(n\sum x_i^2 - (\sum x_i)^2)$</li>
-      <li>$x = (\sum y_i - a\sum x_i)/n$</li>
+      <li>m = (n∑(x_i*y_i) - ∑x_i*∑y_i)/(n∑(x_i²) - (∑x_i)²)</li>
+      <li>x = (∑y_i - a∑x_i)/n</li>
       <li>where $n$ is the number of data points, $\sum$ represents a summation of $x_i$/$y_i$-coordinates of the given points. You can read more <a href="https://en.wikipedia.org/wiki/Simple_linear_regression">here</a>, but beware, statistical terminology and equations can get really nasty 🤮.</li>
     </ul>
   </li>
