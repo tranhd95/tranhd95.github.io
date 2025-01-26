@@ -1,6 +1,6 @@
-base_url = "https://blog.tranhd.eu/"
+base_url = "https://tranhd95.github.io"
 title = "Hai Duong Tran"
-description = "Hai Duong Tran"
+description = "Hai Duong Tran's personal website."
 build_search_index = false
 generate_feeds = true
 compile_sass = true
@@ -22,7 +22,7 @@ highlight_theme = "ayu-light"
 toc = false
 use_cdn = false
 favicon = "/icon/favicon.png"
-theme = "light"              # light, dark, auto, toggle
+theme = "toggle"              # light, dark, auto, toggle
 fancy_code = true
 dynamic_note = true           # a note that can be toggled
 mathjax = true
@@ -50,5 +50,4 @@ enabled = false
 #host = "example.com" # default= goatcounter.com
 
 #[extra.analytics.umami]
-#website_id = "43929cd1-1e83...."
-#host_url = "https://stats.mywebsite.com" # default: https://api-gateway.umami.dev/
+website_id = "231b2149-7c2a-4915-a8ae-a9b22e99a057"
