@@ -75,8 +75,8 @@ The backbone of AI assistants are *language models*. What exactly are they? It's
 />
 
 Well, not really. It's more precise to say that a language model **assigns probabilities to every potential 
-next word in the sequence**. In fact, this is why they are called "language models" - they model the language 
-by predicting which words are likely to follow others.
+next word in the sequence**, or what we call a **probability distribution**. In fact, this is why they are 
+called "language models" - they model the language by predicting which words are likely to follow others.
 
 So how exactly is this useful? The most straightforward application of a language model in its raw form can 
 be seen in your smartphone. Most modern smartphones have a feature where your keyboard suggests potential next 
@@ -171,10 +171,9 @@ nonsensical sentences. Similarly, a freshly trained language model can only do s
 
 To get from basic text completion to helpful conversations, we need an extra step. We **continue training the model** (you've might heard *finetuning* the model), 
 but this time with very specific data - **examples of conversations**. We show it many examples of exchanges between users and helpful assistants. These conversations 
-include everything from simple questions and answers to complex problems with detailed solutions. It's like showing the model "**This is how you should respond when someone asks for help.**"
+include everything from simple questions and answers to complex problems with detailed solutions. It's like showing the model "**This is how you should respond when someone asks for help.**" 
 
-But there's one more trick. The model needs to understand when it's reading a user's question and when it's reading (or generating) the assistant's response. 
-Think of it like a movie script - we need to clearly mark who's speaking:
+What makes this work is that the model treats **the entire conversation - both user questions and assistant responses - as one continuous text sequence**. But for this to work effectively, we need a way to help the model distinguish between different parts of this sequence. Think of it like a movie script - we need to clearly mark who's speaking:
 
 <ul style="font-family: monospace">
   <li><b>Fabienne:</b> Whose motorcycle is this?</li>
@@ -187,15 +186,14 @@ Think of it like a movie script - we need to clearly mark who's speaking:
 
 In practice, we use simple markers - roughly something like <span class='mono'><b>USER:</b></span> and <span class='mono'><b>ASSISTANT:</b></span> to 
 structure our training conversations. We also add **special signals that model learns to tell us when to stop generating the assistant's response, 
-similar to saying "*over*" in radio communications.** Through this additional training, our model learns not just to complete text, but to engage in 
-helpful conversations - though at its core, it's still doing what 
-it was originally trained for: predicting what words should come next in a sequence.
+similar to saying "*over*" in radio communications.** We can then parse out the assistant's responses using those 
+special markers - though at its core, the model is still just predicting what words should come next in that sequence.
 
 <ul style="font-family: monospace">
   <li><b>USER: </b>Hi!</li>
   <li><b>ASSISTANT: </b>Hello, how can I help you?<span class='mono'>[STOP_SIGNAL]</span></li>
   <li><b>USER: </b>What's the world's largest ocean?</li>
-  <li><b>ASSISTANT: </b> Calculating... Calculating... Pacific!<span class='mono'>[STOP_SIGNAL]</span></li>
+  <li><b>ASSISTANT: </b> *Dwight Schrute mechanical noises* Pacific!<span class='mono'>[STOP_SIGNAL]</span></li>
 </ul>
 
 Here's what happens behind the scenes when you use a chat interface:
@@ -217,7 +215,7 @@ Here's what happens behind the scenes when you use a chat interface:
 
 And that's pretty much it. The **extra abilities - like searching the web or using external tools - are just clever “behind-the-scenes” 
 integrations that feed relevant results back to the model**. Handling images or audio, on the other hand, often involves specialized systems 
-or separate models. Yet at its core, the AI is still driven by that same foundational principle: predicting what comes next in a conversation.
+or separate models. Yet at its core, the "writing" AI is still driven by that same foundational principle: predicting what comes next in a conversation.
 
 ### What's next?
 
@@ -254,8 +252,10 @@ And if you prefer videos, you can watch these:
   <li id="fn-1">
     <ul style="padding-left: 0.5rem; list-style: none">
       <li>If we use slightly different distances than visualized - <a href="https://byam.github.io/assets/img/model-eval-val/mean-squared-error.png">the squared errors</a>, we are able to derive two "simple" formulas for ideal $m$ and $c$ beforehand:</li>
-      <li>m = (n∑(x_i*y_i) - ∑x_i*∑y_i)/(n∑(x_i²) - (∑x_i)²)</li>
-      <li>c = (∑y_i - m∑x_i)/n</li>
+      <div style="overflow-x: auto;">
+      $$m = \frac{n\sum(x_i y_i) - \sum x_i \sum y_i}{n\sum(x_i^2) - (\sum x_i)^2}$$
+      $$c = \frac{\sum y_i - m\sum x_i}{n}$$
+      </div>
       <li>where $n$ is the number of data points, $\sum$ represents a summation of $x_i$/$y_i$-coordinates of the given points. You can read more <a href="https://en.wikipedia.org/wiki/Simple_linear_regression">here</a>, but beware, statistical terminology and equations can get really nasty 🤮.</li>
     </ul>
   </li>
