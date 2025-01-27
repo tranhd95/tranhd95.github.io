@@ -2,7 +2,7 @@
 title = "AI Assistants: Visually Explained"
 description = "Visual guide to AI assistants and LLMs."
 date = "2025-01-25"
-updated = "2025-01-25"
+updated = "2025-01-27"
 
 [taxonomies]
 tags=["llm"]
