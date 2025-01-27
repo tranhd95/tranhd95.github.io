@@ -46,11 +46,6 @@ comment = true
     });
   });
 </script>
-<script>
-  function showResiduals() {
-    showErrorLinesCheckbox.elt.children[0].checked = !showErrorLinesCheckbox.elt.children[0].checked;
-  }
-</script>
 This is a visual guide explaining how AI chatbots such as ChatGPT, Claude, and Gemini work. 
 I aim to explain the core concepts behind these systems, avoiding both 
 unnecessary details and the cryptic analogies that often obscure important terms (by sharing 
@@ -112,7 +107,7 @@ these values yourself to see how they change the line:
 
 How does an ideal line look like? Usually, we want the line to be as close as possible to all our dots. To see how well a line fits, 
 <a title="Show distances" href="#" onclick="showResiduals();return false;">click here</a> to show the distances between the dots and the line. 
-While you could try to minimize these distances by hand, **we can actually find the perfect values for $m$ and $c$ mathematically, letting a computer 
+While you could try to minimize these distances by hand, **we can actually find the <a href="#" onclick="setPerfectValues(); return false;">perfect values</a> for $m$ and $c$ mathematically, letting a computer 
 do the work quickly and precisely** <sup><a href="#fn-1">1</a></sup>.
 
 Now, language models work in a similar way, but instead of a formula that predicts coffee shop numbers, they use a formula that <a href="#large-language-models">
@@ -260,7 +255,7 @@ And if you prefer videos, you can watch these:
     <ul style="padding-left: 0.5rem; list-style: none">
       <li>If we use slightly different distances than visualized - <a href="https://byam.github.io/assets/img/model-eval-val/mean-squared-error.png">the squared errors</a>, we are able to derive two "simple" formulas for ideal $m$ and $c$ beforehand:</li>
       <li>m = (n∑(x_i*y_i) - ∑x_i*∑y_i)/(n∑(x_i²) - (∑x_i)²)</li>
-      <li>x = (∑y_i - a∑x_i)/n</li>
+      <li>c = (∑y_i - m∑x_i)/n</li>
       <li>where $n$ is the number of data points, $\sum$ represents a summation of $x_i$/$y_i$-coordinates of the given points. You can read more <a href="https://en.wikipedia.org/wiki/Simple_linear_regression">here</a>, but beware, statistical terminology and equations can get really nasty 🤮.</li>
     </ul>
   </li>

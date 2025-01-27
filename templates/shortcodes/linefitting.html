@@ -35,6 +35,27 @@
     const xMin = -1, xMax = 25;
     const yMin = -1, yMax = 25;
 
+    function showResiduals() {
+        showErrorLinesCheckbox.elt.children[0].checked = !showErrorLinesCheckbox.elt.children[0].checked;
+    }
+
+    function setPerfectValues() {
+        const n = points.length;
+        const xy = points.reduce((sum, p) => sum + p.x * p.y, 0);
+        const x = points.reduce((sum, p) => sum + p.x, 0);
+        const y = points.reduce((sum, p) => sum + p.y, 0);
+        const x2 = points.reduce((sum, p) => sum + p.x * p.x, 0);
+        
+        const m = (n * xy - x * y) / (n * x2 - x * x);
+        const c = (y - m * x) / n;
+
+        document.querySelector('#a-slider').children[1].value = m;
+        document.querySelector('#b-slider').children[1].value = c;
+
+        showErrorLinesCheckbox.elt.children[0].checked = true;
+        
+    }
+
     function setup() {
         // Create canvas inside container
         let canvas = createCanvas(400, 400);
