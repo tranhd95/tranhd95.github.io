@@ -2,7 +2,7 @@
 title = "AI Assistants: Visually Explained"
 description = "Visual guide to AI assistants and LLMs."
 date = "2025-01-25"
-updated = "2025-01-27"
+updated = "2025-01-28"
 
 [taxonomies]
 tags=["llm"]
@@ -173,7 +173,7 @@ To get from basic text completion to helpful conversations, we need an extra ste
 but this time with very specific data - **examples of conversations**. We show it many examples of exchanges between users and helpful assistants. These conversations 
 include everything from simple questions and answers to complex problems with detailed solutions. It's like showing the model "**This is how you should respond when someone asks for help.**" 
 
-What makes this work is that the model treats **the entire conversation - both user questions and assistant responses - as one continuous text sequence**. But for this to work effectively, we need a way to help the model distinguish between different parts of this sequence. Think of it like a movie script - we need to clearly mark who's speaking:
+What makes this work is that the model treats **the entire conversation - both user questions and assistant responses - as one continuous text sequence**. But for this to work effectively, we need a way to help the model (and us) to distinguish between different parts of this sequence. Think of it like a movie script - we need to clearly mark who's speaking:
 
 <ul style="font-family: monospace">
   <li><b>Fabienne:</b> Whose motorcycle is this?</li>
