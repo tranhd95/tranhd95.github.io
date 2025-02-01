@@ -3,11 +3,13 @@ title = "AI Assistants: Visually Explained"
 description = "Visual guide to AI assistants and LLMs."
 date = "2025-01-25"
 updated = "2025-01-27"
-
 [taxonomies]
 tags=["llm"]
 [extra]
 comment = true
+meta = [
+    {property = "og:image", content = "/animations/keyboard.webp"},
+]
 +++
 <style>
   img {
@@ -196,12 +198,12 @@ special markers - though at its core, the model is still just predicting what wo
   <li><b>ASSISTANT: </b> *Dwight Schrute mechanical noises* Pacific!<span class='mono'>[STOP_SIGNAL]</span></li>
 </ul>
 
-Here's what happens behind the scenes when you use a chat interface:
+It's important to understand that **ChatGPT, Claude, and similar applications are actually two separate pieces: the language model (LLM) that generates text, and the chat interface (the app) that helps you interact with it**. Here's what happens behind the scenes when you use these apps:
 
 1. When you type "Hi!", the app adds <span class='mono'>USER:</span> before your message.
 2. It then adds <span class='mono'>ASSISTANT:</span> after your message.
-3. Then the app uses the language model to generate the response word by word.
-4. When it generates the <span class='mono'>[STOP_SIGNAL]</span>, the response is complete.
+3. The app sends this formatted text to the language model, which generates the response word by word.
+4. When the model generates the <span class='mono'>[STOP_SIGNAL]</span>, the app knows the response is complete and displays it to you.
 
 <img 
   srcset="/animations/chat_500px.webp 500w,
@@ -214,7 +216,7 @@ Here's what happens behind the scenes when you use a chat interface:
 />
 
 And that's pretty much it. The **extra abilities - like searching the web or using external tools - are just clever “behind-the-scenes” 
-integrations that feed relevant results back to the model**. Handling images or audio, on the other hand, often involves specialized systems 
+integrations on the app-level that feed relevant results back to the model**. Handling images or audio, on the other hand, often involves specialized systems 
 or separate models. Yet at its core, the "writing" AI is still driven by that same foundational principle: predicting what comes next in a conversation.
 
 ### What's next?
