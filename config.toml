@@ -14,9 +14,9 @@ include_path = true
 include_content = true
 index_format = "elasticlunr_json"
 
-[markdown.highlight]
-code = false
-theme = "ayu-light"
+[markdown]
+highlight_code = false
+highlight_theme = "ayu-light"
 
 [extra]
 toc = false
