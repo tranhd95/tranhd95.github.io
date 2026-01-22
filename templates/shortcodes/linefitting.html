@@ -106,12 +106,13 @@
         let py2 = map(y2, yMin, yMax, height, 0);
         
         
-        // Calculate total (squared) error
+        // Calculate total (squared) perpendicular error
         let totalError = 0;
         for (let pt of points) {
-            let prediction = a * pt.x + b;
-            let residual = pt.y - prediction;
-            totalError += residual * residual;
+            // Perpendicular distance from point (x0, y0) to line ax - y + b = 0
+            // distance = |ax0 - y0 + b| / sqrt(a^2 + 1)
+            let perpDist = abs(a * pt.x - pt.y + b) / sqrt(a * a + 1);
+            totalError += perpDist * perpDist;
         }
         
         // Display slope, intercept, and total error
@@ -123,17 +124,26 @@
         text('x', 200, 380);
         // Only show dashed lines + error text if checkbox is checked
         if (showErrorLinesCheckbox.checked()) {
-            // 1) Draw dashed red lines from each point to the line
+            // 1) Draw dashed red lines from each point perpendicular to the line
             stroke('red');
             strokeWeight(2);
             drawingContext.setLineDash([5, 5]); // [dashLength, gapLength]
             
             for (let pt of points) {
+                // Find the foot of the perpendicular from point (x0, y0) to line y = ax + b
+                // The perpendicular meets the line at:
+                // x_foot = (a(y0 - b) + x0) / (a^2 + 1)
+                // y_foot = a * x_foot + b
+                let xFoot = (a * (pt.y - b) + pt.x) / (a * a + 1);
+                let yFoot = a * xFoot + b;
+                
+                // Map both points to canvas coordinates
                 let px = map(pt.x, xMin, xMax, 0, width);
                 let py = map(pt.y, yMin, yMax, height, 0);
-                let predictedY = a * pt.x + b;
-                let pyPred = map(predictedY, yMin, yMax, height, 0);
-                line(px, py, px, pyPred);
+                let pxFoot = map(xFoot, xMin, xMax, 0, width);
+                let pyFoot = map(yFoot, yMin, yMax, height, 0);
+                
+                line(px, py, pxFoot, pyFoot);
             }
             
             // Reset line dash so further drawing is not dashed
