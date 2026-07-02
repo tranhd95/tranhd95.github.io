@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Hai Duong Tran</title>
+    <subtitle>Hai Duong Tran&#x27;s personal website.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://tranhd95.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://tranhd95.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-01T00:00:00+00:00</updated>
+    <id>https://tranhd95.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>AI Assistants: Visually Explained</title>
+        <published>2025-01-25T00:00:00+00:00</published>
+        <updated>2025-02-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://tranhd95.github.io/posts/ai-assistants-visually-explained/"/>
+        <id>https://tranhd95.github.io/posts/ai-assistants-visually-explained/</id>
+        
+        <content type="html" xml:base="https://tranhd95.github.io/posts/ai-assistants-visually-explained/">&lt;style&gt;
+  img {
+    border: 0; 
+    margin: 0 auto; 
+    display: block;
+  } 
+
+  .freezeframe:hover {
+    cursor: pointer
+  } 
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .mono {
+    font-family: monospace;
+  }
+
+  ol &gt; li {
+    margin-top: 0.25rem;
+  }
+&lt;&#x2F;style&gt;
+&lt;!-- Add this to your head section or create a separate JS file --&gt;
+&lt;script defer src=&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;freezeframe&#x2F;dist&#x2F;freezeframe.min.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;script defer&gt;
+  document.addEventListener(&#x27;DOMContentLoaded&#x27;, function() {
+    new Freezeframe({
+      selector: &#x27;.freezeframe&#x27;,
+      trigger: &#x27;click&#x27;,
+      overlay: true,
+      responsive: true,
+      warnings: false
+    });
+  });
+&lt;&#x2F;script&gt;
+&lt;p&gt;This is a visual guide explaining how AI chatbots such as ChatGPT, Claude, and Gemini work.
+I aim to explain the core concepts behind these systems, avoiding both
+unnecessary details and the cryptic analogies that often obscure important terms (by sharing
+different analogies 😎).&lt;&#x2F;p&gt;
+&lt;p&gt;This post will cover the following topics. &lt;strong&gt;No prior knowledge is required&lt;&#x2F;strong&gt; - However I assume
+you&#x27;ve used a chatbot before and are familiar with basic geometry.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Large Language Models (LLMs)&lt;&#x2F;strong&gt; - the main technology behind AI assistants&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tranhd95.github.io&#x2F;posts&#x2F;ai-assistants-visually-explained&#x2F;#large-language-models&quot;&gt;What are they?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tranhd95.github.io&#x2F;posts&#x2F;ai-assistants-visually-explained&#x2F;#but-how-do-we-create-such-models&quot;&gt;How are they created?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tranhd95.github.io&#x2F;posts&#x2F;ai-assistants-visually-explained&#x2F;#how-do-we-turn-a-language-model-into-a-chatbot&quot;&gt;How are they used to build ChatGPT-like systems?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;large-language-models&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#large-language-models&quot; aria-label=&quot;Anchor link for: large-language-models&quot;&gt;Large Language Models&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;The backbone of AI assistants are &lt;em&gt;language models&lt;&#x2F;em&gt;. What exactly are they? It&#x27;s simple: language models
+&lt;strong&gt;just predict the next word of a text sequence&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img 
+  srcset=&quot;&#x2F;animations&#x2F;next_word_prediction_500px.webp 500w,
+          &#x2F;animations&#x2F;next_word_prediction.webp 1000w&quot;
+  sizes=&quot;(max-width: 600px) 500px,
+         1000px&quot;
+  src=&quot;&#x2F;animations&#x2F;next_word_prediction.webp&quot;
+  alt=&quot;Language Model predicts the next word.&quot;
+  class=&quot;freezeframe&quot;
+&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Well, not really. It&#x27;s more precise to say that a language model &lt;strong&gt;assigns probabilities to every potential
+next word in the sequence&lt;&#x2F;strong&gt;, or what we call a &lt;strong&gt;probability distribution&lt;&#x2F;strong&gt;. In fact, this is why they are
+called &quot;language models&quot; - they model the language by predicting which words are likely to follow others.&lt;&#x2F;p&gt;
+&lt;p&gt;So how exactly is this useful? The most straightforward application of a language model in its raw form can
+be seen in your smartphone. Most modern smartphones have a feature where your keyboard suggests potential next
+words as you type. In this case, it makes sense to suggest the most likely words that could follow your text.&lt;&#x2F;p&gt;
+&lt;img alt=&quot;Language model in smartphone&#x27;s predictive keyboard.&quot; class=&quot;freezeframe&quot; src=&quot;&#x2F;animations&#x2F;keyboard.webp&quot; &#x2F;&gt;
+&lt;h3 id=&quot;but-how-do-we-create-such-models&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#but-how-do-we-create-such-models&quot; aria-label=&quot;Anchor link for: but-how-do-we-create-such-models&quot;&gt;But how do we create such models?&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Let&#x27;s start with a simple example. Imagine we want to help entrepreneurs decide where to open new coffee shops. We could look at different cities,
+counting how many coffee shops they have compared to their population. If we plot this data as dots on a chart, we might notice a pattern - larger
+cities tend to have more coffee shops.&lt;&#x2F;p&gt;
+&lt;p&gt;To make this pattern more useful, we can try to draw a straight line that best captures the relationship.
+&lt;strong&gt;This line becomes our simple &quot;model&quot; - it tells us roughly how many coffee shops we&#x27;d expect in a city of a given size&lt;&#x2F;strong&gt;. What&#x27;s particularly
+interesting are the cities that fall far below this line - these might be promising locations for new coffee shops since they have fewer shops than
+we&#x27;d expect for their size.&lt;&#x2F;p&gt;
+&lt;img alt=&quot;Interactive visualizaton of linear line fitting.&quot; src=&quot;&#x2F;images&#x2F;linefitting.png&quot; width=&quot;50%&quot;&gt;
+&lt;p&gt;When looking at these dots, we could try to draw a line by hand. But imagine if we had data from thousands of cities, or if we wanted to update
+our line every week as new data comes in. Drawing by hand would become impractical. That&#x27;s why we use a mathematical formula to describe the line:
+$$
+y = mx + c
+$$
+This formula lets a computer draw the line for us automatically - &lt;strong&gt;we just need to find the right values for $m$ and $c$&lt;&#x2F;strong&gt;. You can try adjusting
+these values yourself to see how they change the line:
+&lt;style&gt;
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #a-value, #b-value {
+        display: inline-block;
+        width: 60px;
+        text-align: right; 
+        font-family: monospace;
+    }
+&lt;&#x2F;style&gt;
+&lt;script src=&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;p5@1.4.0&#x2F;lib&#x2F;p5.min.js&quot;&gt;&lt;&#x2F;script&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div&gt;
+      &lt;div id=&quot;a-slider&quot; style=&quot;display:inline-block;&quot;&gt;&lt;span class=&quot;mono&quot;&gt;m = &lt;&#x2F;span&gt;&lt;&#x2F;div&gt;
+      &lt;span id=&quot;a-value&quot;&gt;&lt;&#x2F;span&gt;
+    &lt;&#x2F;div&gt;
+    &lt;div&gt;
+      &lt;div id=&quot;b-slider&quot; style=&quot;display:inline-block;&quot;&gt;&lt;span class=&quot;mono&quot;&gt;c = &lt;&#x2F;span&gt;&lt;&#x2F;div&gt;
+      &lt;span id=&quot;b-value&quot;&gt;&lt;&#x2F;span&gt;
+    &lt;&#x2F;div&gt;
+    &lt;div id=&quot;sketch-container&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div id=&quot;checkbox&quot;&gt;&lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+
+&lt;script&gt;
+    let sliderA, sliderB;
+    let points = [];
+    let showErrorLinesCheckbox;
+
+    &#x2F;&#x2F; Adjust these for your plotting range:
+    const xMin = -1, xMax = 25;
+    const yMin = -1, yMax = 25;
+
+    function showResiduals() {
+        showErrorLinesCheckbox.elt.children[0].checked = !showErrorLinesCheckbox.elt.children[0].checked;
+    }
+
+    function setPerfectValues() {
+        const n = points.length;
+        const xy = points.reduce((sum, p) =&gt; sum + p.x * p.y, 0);
+        const x = points.reduce((sum, p) =&gt; sum + p.x, 0);
+        const y = points.reduce((sum, p) =&gt; sum + p.y, 0);
+        const x2 = points.reduce((sum, p) =&gt; sum + p.x * p.x, 0);
+        
+        const m = (n * xy - x * y) &#x2F; (n * x2 - x * x);
+        const c = (y - m * x) &#x2F; n;
+
+        document.querySelector(&#x27;#a-slider&#x27;).children[1].value = m;
+        document.querySelector(&#x27;#b-slider&#x27;).children[1].value = c;
+
+        showErrorLinesCheckbox.elt.children[0].checked = true;
+        
+    }
+
+    function setup() {
+        &#x2F;&#x2F; Create canvas inside container
+        let canvas = createCanvas(400, 400);
+        canvas.parent(&quot;sketch-container&quot;);
+        
+        &#x2F;&#x2F; Generate random data points near a known line (y = 0.5x + 2)
+        for (let i = 5; i &lt; 25; i += 2) {
+            let x = i;
+            let y = 0.3 * x + 6 + random(-3, 3); &#x2F;&#x2F; add slight noise
+            points.push({x, y});
+        }
+        
+        &#x2F;&#x2F; Create slope slider
+        sliderA = createSlider(0.0, 3, 1.00, 0.01);
+        sliderA.parent(&quot;a-slider&quot;);
+        
+        &#x2F;&#x2F; Create intercept slider
+        sliderB = createSlider(-1, 15, 0.00, 0.01);
+        sliderB.parent(&quot;b-slider&quot;);
+
+        &#x2F;&#x2F; Create the checkbox (by default, unchecked).
+        showErrorLinesCheckbox = createCheckbox(&#x27;Show distances from dots&#x27;, false);
+        &#x2F;&#x2F; Attach it to some container. Adjust as needed:
+        showErrorLinesCheckbox.parent(&quot;checkbox&quot;);
+    }
+
+    function draw() {
+        background(255);
+        
+        &#x2F;&#x2F; Draw grid and axes first
+        drawGridAndAxes();
+
+        let a = sliderA.value(); &#x2F;&#x2F; slope
+        let b = sliderB.value(); &#x2F;&#x2F; intercept
+        document.querySelector(&quot;#a-value&quot;).textContent = a;
+        document.querySelector(&quot;#b-value&quot;).textContent = b;
+ 
+        &#x2F;&#x2F; Compute line endpoints based on our domain
+        let x1 = xMin;
+        let y1 = a * x1 + b;
+        let x2 = xMax;
+        let y2 = a * x2 + b;
+        
+        &#x2F;&#x2F; Map line endpoints to canvas
+        let px1 = map(x1, xMin, xMax, 0, width);
+        let py1 = map(y1, yMin, yMax, height, 0);
+        let px2 = map(x2, xMin, xMax, 0, width);
+        let py2 = map(y2, yMin, yMax, height, 0);
+        
+        
+        &#x2F;&#x2F; Calculate total (squared) perpendicular error
+        let totalError = 0;
+        for (let pt of points) {
+            &#x2F;&#x2F; Perpendicular distance from point (x0, y0) to line ax - y + b = 0
+            &#x2F;&#x2F; distance = |ax0 - y0 + b| &#x2F; sqrt(a^2 + 1)
+            let perpDist = abs(a * pt.x - pt.y + b) &#x2F; sqrt(a * a + 1);
+            totalError += perpDist * perpDist;
+        }
+        
+        &#x2F;&#x2F; Display slope, intercept, and total error
+        noStroke();
+        fill(0);
+        textSize(24);
+        text(`y = ${nf(a,1,2)}x + ${nf(b,1,2)}`, 30, 30);
+        text(&#x27;y&#x27;, 0, 200);
+        text(&#x27;x&#x27;, 200, 380);
+        &#x2F;&#x2F; Only show dashed lines + error text if checkbox is checked
+        if (showErrorLinesCheckbox.checked()) {
+            &#x2F;&#x2F; 1) Draw dashed red lines from each point perpendicular to the line
+            stroke(&#x27;red&#x27;);
+            strokeWeight(2);
+            drawingContext.setLineDash([5, 5]); &#x2F;&#x2F; [dashLength, gapLength]
+            
+            for (let pt of points) {
+                &#x2F;&#x2F; Find the foot of the perpendicular from point (x0, y0) to line y = ax + b
+                &#x2F;&#x2F; The perpendicular meets the line at:
+                &#x2F;&#x2F; x_foot = (a(y0 - b) + x0) &#x2F; (a^2 + 1)
+                &#x2F;&#x2F; y_foot = a * x_foot + b
+                let xFoot = (a * (pt.y - b) + pt.x) &#x2F; (a * a + 1);
+                let yFoot = a * xFoot + b;
+                
+                &#x2F;&#x2F; Map both points to canvas coordinates
+                let px = map(pt.x, xMin, xMax, 0, width);
+                let py = map(pt.y, yMin, yMax, height, 0);
+                let pxFoot = map(xFoot, xMin, xMax, 0, width);
+                let pyFoot = map(yFoot, yMin, yMax, height, 0);
+                
+                line(px, py, pxFoot, pyFoot);
+            }
+            
+            &#x2F;&#x2F; Reset line dash so further drawing is not dashed
+            drawingContext.setLineDash([]);
+
+            &#x2F;&#x2F; 2) Show the total error text
+            noStroke();
+            fill(0);
+            textSize(18);
+            text(`Sum of distances: ${nf(totalError,1,2)}`, 30, 60);
+        }
+
+
+        &#x2F;&#x2F; Draw data points
+        fill(102, 102, 102);
+        noStroke();
+        for (let pt of points) {
+            let px = map(pt.x, xMin, xMax, 0, width);
+            let py = map(pt.y, yMin, yMax, height, 0);
+            ellipse(px, py, 15, 15);
+        }
+
+        &#x2F;&#x2F; Draw the fitted line
+        stroke(145, 19, 13);
+        strokeWeight(5);
+        line(px1, py1, px2, py2);
+
+        
+    }
+
+    &#x2F;&#x2F; Helper to draw a simple grid and x&#x2F;y axes
+    function drawGridAndAxes() {
+        stroke(220);
+        strokeWeight(1);
+        
+        &#x2F;&#x2F; Vertical grid lines
+        for (let x = 0; x &lt; xMax; x += 5) {
+            let gx = map(x, xMin, xMax, 0, width);
+            line(gx, 0, gx, height);
+        }
+        
+        &#x2F;&#x2F; Horizontal grid lines
+        for (let y = 0; y &lt; yMax; y += 5) {
+            let gy = map(y, yMin, yMax, height, 0);
+            line(0, gy, width, gy);
+        }
+        
+        &#x2F;&#x2F; Draw axes in black
+        stroke(102, 102, 102);
+        strokeWeight(5);
+        
+        &#x2F;&#x2F; x-axis (if it’s in range)
+        if (yMin &lt;= 0 &amp;&amp; yMax &gt;= 0) {
+            let py0 = map(0, yMin, yMax, height, 0);
+            line(0, py0, width, py0);
+        }
+
+        &#x2F;&#x2F; y-axis (if it’s in range)
+        if (xMin &lt;= 0 &amp;&amp; xMax &gt;= 0) {
+            let px0 = map(0, xMin, xMax, 0, width);
+            line(px0, 0, px0, height);
+        }
+    }
+&lt;&#x2F;script&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;How does an ideal line look like? Usually, we want the line to be as close as possible to all our dots. To see how well a line fits,
+&lt;a title=&quot;Show distances&quot; href=&quot;#&quot; onclick=&quot;showResiduals();return false;&quot;&gt;click here&lt;&#x2F;a&gt; to show the distances between the dots and the line.
+While you could try to minimize these distances by hand, &lt;strong&gt;we can actually find the &lt;a href=&quot;#&quot; onclick=&quot;setPerfectValues(); return false;&quot;&gt;perfect values&lt;&#x2F;a&gt; for $m$ and $c$ mathematically, letting a computer
+do the work quickly and precisely&lt;&#x2F;strong&gt; &lt;sup&gt;&lt;a href=&quot;#fn-1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Now, language models work in a similar way, but instead of a formula that predicts coffee shop numbers, they use a formula that &lt;a href=&quot;#large-language-models&quot;&gt;
+outputs probability distribution of next words&lt;&#x2F;a&gt;. And instead of finding the best values for just two parameters ($m$ and $c$), they use much more complex
+formulas &lt;strong&gt;with hundreds of billions (≥ 100,000,000,000) parameters to adjust&lt;&#x2F;strong&gt;. That&#x27;s why we call them &lt;span style=&quot;font-size: 1.25rem&quot;&gt;&lt;strong&gt;large language models&lt;&#x2F;strong&gt;&lt;&#x2F;span&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;When you hear about &lt;strong&gt;&quot;training&quot;&lt;&#x2F;strong&gt; AI systems or making them &lt;strong&gt;&quot;learn&quot;&lt;&#x2F;strong&gt;, it&#x27;s exactly like our line example - we&#x27;re just finding the right numbers to make the
+mathematical formula work properly. The only difference is the massive scale - while we could adjust our line manually, with language models we need
+lots of compute power to find the right values for all these parameters.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;training-large-language-models&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#training-large-language-models&quot; aria-label=&quot;Anchor link for: training-large-language-models&quot;&gt;Training large language models&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;Just like we needed data from many cities to find the trend line, a language model also needs examples to learn from.
+What are the dots in this case? Instead of each dot being a city with its coffee shops, each dot is a &lt;strong&gt;piece of text and
+what word comes next&lt;&#x2F;strong&gt;. For example: &quot;&lt;em&gt;Thank you very&lt;&#x2F;em&gt;&quot; and the next word &quot;&lt;em&gt;much&lt;&#x2F;em&gt;&quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;When we first create a language model, its parameters are set randomly, so its predictions make no sense at all - it might think
+words like &quot;&lt;em&gt;banana&lt;&#x2F;em&gt;&quot; or &quot;&lt;em&gt;spaceship&lt;&#x2F;em&gt;&quot; are just as likely to follow &quot;&lt;em&gt;Thank you very&lt;&#x2F;em&gt;&quot; as the word &quot;&lt;em&gt;much&lt;&#x2F;em&gt;&quot;. Similar to how we tried to
+minimize the distances between our dots and the line, &lt;strong&gt;we try to minimize how wrong these predictions are&lt;&#x2F;strong&gt;. We show the model what
+actually came next - in this case &quot;&lt;em&gt;much&lt;&#x2F;em&gt;&quot; - and adjust its parameters slightly. &lt;strong&gt;By repeatedly showing the model examples
+like this, we gradually tune its parameters so it learns to predict sensible continuations instead of random words.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img 
+  srcset=&quot;&#x2F;animations&#x2F;training_500px.webp 500w,
+          &#x2F;animations&#x2F;training.webp 1000w&quot;
+  sizes=&quot;(max-width: 600px) 500px,
+         1000px&quot;
+  src=&quot;&#x2F;animations&#x2F;training.webp&quot;
+  alt=&quot;Training process of neural network language model.&quot;
+  class=&quot;freezeframe&quot;
+&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;So how many examples do we need to train a good language model? We&#x27;re talking about &lt;strong&gt;hundreds of billions&lt;&#x2F;strong&gt; of words from webpages, books,
+articles, and other sources. Processing this much data and at this scale requires extremely powerful computers, which is why training these
+models costs a lot of money 💸💸💸.&lt;&#x2F;p&gt;
+&lt;p&gt;The result of this process is that now the model produces the probabilities of the next words that are aligned with what the model saw in
+the training data. It has learnt language patterns, it has memorized lots of facts, different writing styles, opinions, or
+multiple languages. However, if there is one thing I want you to remember, it is that &lt;a href=&quot;#language-modelling&quot;&gt;&lt;b&gt;all the model is actually
+doing and was taught to do is to tell us what possible words could come up next in a text&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;. No fact-checking, no internet searching,
+no &quot;human-thinking&quot; is done inside the model.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;how-do-we-turn-a-language-model-into-a-chatbot&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#how-do-we-turn-a-language-model-into-a-chatbot&quot; aria-label=&quot;Anchor link for: how-do-we-turn-a-language-model-into-a-chatbot&quot;&gt;How do we turn a language model into a chatbot?&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;To generate a longer text with a language model, we start with some input text and let the model predict one word at a time. Each predicted word
+gets added to our text, and we ask for another prediction. Repeat this process, and you&#x27;ll get a complete sentence or even a paragraph.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img 
+  srcset=&quot;&#x2F;animations&#x2F;autoregressive_500px.webp 500w,
+          &#x2F;animations&#x2F;autoregressive.webp 1000w&quot;
+  sizes=&quot;(max-width: 600px) 500px,
+         1000px&quot;
+  src=&quot;&#x2F;animations&#x2F;autoregressive.webp&quot;
+  alt=&quot;Autoregressive generation of language model.&quot;
+  class=&quot;freezeframe&quot;
+&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;ve ever played with your phone&#x27;s keyboard suggestions, tapping only the suggested words, you know you can create some funny but mostly
+nonsensical sentences. Similarly, a freshly trained language model can only do simple text completion. Type &quot;&lt;em&gt;Hey,&lt;&#x2F;em&gt;&quot; and it might suggest &quot;&lt;em&gt;what&#x27;s up?&lt;&#x2F;em&gt;&quot; -
+&lt;strong&gt;but it won&#x27;t respond with &quot;&lt;em&gt;Hi! How can I help you today?&lt;&#x2F;em&gt;&quot; like modern AI assistants do.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;To get from basic text completion to helpful conversations, we need an extra step. We &lt;strong&gt;continue training the model&lt;&#x2F;strong&gt; (you&#x27;ve might heard &lt;em&gt;finetuning&lt;&#x2F;em&gt; the model),
+but this time with very specific data - &lt;strong&gt;examples of conversations&lt;&#x2F;strong&gt;. We show it many examples of exchanges between users and helpful assistants. These conversations
+include everything from simple questions and answers to complex problems with detailed solutions. It&#x27;s like showing the model &quot;&lt;strong&gt;This is how you should respond when someone asks for help.&lt;&#x2F;strong&gt;&quot;&lt;&#x2F;p&gt;
+&lt;p&gt;What makes this work is that the model treats &lt;strong&gt;the entire conversation - both user questions and assistant responses - as one continuous text sequence&lt;&#x2F;strong&gt;. But for this to work effectively, we need a way to help the model (and us) to distinguish between different parts of this sequence. Think of it like a movie script - we need to clearly mark who&#x27;s speaking:&lt;&#x2F;p&gt;
+&lt;ul style=&quot;font-family: monospace&quot;&gt;
+  &lt;li&gt;&lt;b&gt;Fabienne:&lt;&#x2F;b&gt; Whose motorcycle is this?&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;Butch:&lt;&#x2F;b&gt; It&#x27;s a chopper, baby.&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;Fabienne:&lt;&#x2F;b&gt; Whose chopper is this?&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;Butch:&lt;&#x2F;b&gt; It&#x27;s Zed&#x27;s.&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;Fabienne:&lt;&#x2F;b&gt; Who&#x27;s Zed?&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;Butch:&lt;&#x2F;b&gt; Zed&#x27;s dead, baby. Zed&#x27;s dead.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;In practice, we use simple markers - roughly something like &lt;span class=&#x27;mono&#x27;&gt;&lt;b&gt;USER:&lt;&#x2F;b&gt;&lt;&#x2F;span&gt; and &lt;span class=&#x27;mono&#x27;&gt;&lt;b&gt;ASSISTANT:&lt;&#x2F;b&gt;&lt;&#x2F;span&gt; to
+structure our training conversations. We also add &lt;strong&gt;special signals that model learns to tell us when to stop generating the assistant&#x27;s response,
+similar to saying &quot;&lt;em&gt;over&lt;&#x2F;em&gt;&quot; in radio communications.&lt;&#x2F;strong&gt; We can then parse out the assistant&#x27;s responses using those
+special markers - though at its core, the model is still just predicting what words should come next in that sequence.&lt;&#x2F;p&gt;
+&lt;ul style=&quot;font-family: monospace&quot;&gt;
+  &lt;li&gt;&lt;b&gt;USER: &lt;&#x2F;b&gt;Hi!&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;ASSISTANT: &lt;&#x2F;b&gt;Hello, how can I help you?&lt;span class=&#x27;mono&#x27;&gt;[STOP_SIGNAL]&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;USER: &lt;&#x2F;b&gt;What&#x27;s the world&#x27;s largest ocean?&lt;&#x2F;li&gt;
+  &lt;li&gt;&lt;b&gt;ASSISTANT: &lt;&#x2F;b&gt; *Dwight Schrute mechanical noises* Pacific!&lt;span class=&#x27;mono&#x27;&gt;[STOP_SIGNAL]&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;It&#x27;s important to understand that &lt;strong&gt;ChatGPT, Claude, and similar applications are actually two separate pieces: the language model (LLM) that generates text, and the chat interface (the app) that helps you interact with it&lt;&#x2F;strong&gt;. Here&#x27;s what happens behind the scenes when you use these apps:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;When you type &quot;Hi!&quot;, the app adds &lt;span class=&#x27;mono&#x27;&gt;USER:&lt;&#x2F;span&gt; before your message.&lt;&#x2F;li&gt;
+&lt;li&gt;It then adds &lt;span class=&#x27;mono&#x27;&gt;ASSISTANT:&lt;&#x2F;span&gt; after your message.&lt;&#x2F;li&gt;
+&lt;li&gt;The app sends this formatted text to the language model, which generates the response word by word.&lt;&#x2F;li&gt;
+&lt;li&gt;When the model generates the &lt;span class=&#x27;mono&#x27;&gt;[STOP_SIGNAL]&lt;&#x2F;span&gt;, the app knows the response is complete and displays it to you.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;&lt;img 
+  srcset=&quot;&#x2F;animations&#x2F;chat_500px.webp 500w,
+          &#x2F;animations&#x2F;chat.webp 1000w&quot;
+  sizes=&quot;(max-width: 600px) 500px,
+         1000px&quot;
+  src=&quot;&#x2F;animations&#x2F;chat.webp&quot;
+  alt=&quot;What AI assistants do in the background with the chat conversation.&quot;
+  class=&quot;freezeframe&quot;
+&#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;And that&#x27;s pretty much it. The &lt;strong&gt;extra abilities - like searching the web or using external tools - are just clever “behind-the-scenes”
+integrations on the app-level that feed relevant results back to the model&lt;&#x2F;strong&gt;. Handling images or audio, on the other hand, often involves specialized systems
+or separate models. Yet at its core, the &quot;writing&quot; AI is still driven by that same foundational principle: predicting what comes next in a conversation.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;what-s-next&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-s-next&quot; aria-label=&quot;Anchor link for: what-s-next&quot;&gt;What&#x27;s next?&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;In my (&lt;em&gt;hypothetical&lt;&#x2F;em&gt;) next blog post, I&#x27;ll explore how LLM APIs work under the hood. While avoiding complex mathematics, I&#x27;ll explain the key
+architectural details that shape both the capabilities and limitations of AI assistants. This should be useful for developers and anyone curious
+about how these systems work in more details.&lt;&#x2F;p&gt;
+&lt;p&gt;Topics that I might cover:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tokens, vocabulary and context length&lt;&#x2F;li&gt;
+&lt;li&gt;Sampling parameters&lt;&#x2F;li&gt;
+&lt;li&gt;Roles (system, user, assistant, ...?)&lt;&#x2F;li&gt;
+&lt;li&gt;Function calling &#x2F; Tool use&lt;&#x2F;li&gt;
+&lt;li&gt;... your suggestions?&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;acknowledgments-and-further-reading-watching&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#acknowledgments-and-further-reading-watching&quot; aria-label=&quot;Anchor link for: acknowledgments-and-further-reading-watching&quot;&gt;Acknowledgments and further reading (watching)&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;p&gt;For those familiar with AI, you may know &lt;a href=&quot;https:&#x2F;&#x2F;jalammar.github.io&#x2F;about&#x2F;&quot;&gt;Jay Alammar&#x27;s excellent blog&lt;&#x2F;a&gt; which clearly inspired this post. I recommend
+this post for deeper learning:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;jalammar.github.io&#x2F;visual-interactive-guide-basics-neural-networks&#x2F;&quot;&gt;A Visual and Interactive Guide to the Basics of Neural Networks&lt;&#x2F;a&gt;
+&lt;ul&gt;
+&lt;li&gt;I later discovered Jay had already used the line-fitting analogy in his post.&lt;&#x2F;li&gt;
+&lt;li&gt;His guide offers detailed and interactive insights into the learning process.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;And if you prefer videos, you can watch these:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=LPZh9BOjkQs&quot;&gt;3Blue1Brown&#x27;s Large Language Models explained briefly&lt;&#x2F;a&gt;, or&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;zjkBMFhNj_g&quot;&gt;1 hour long Andrej Karpathy&#x27;s Intro to Large Language Models&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h3 id=&quot;footnotes&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#footnotes&quot; aria-label=&quot;Anchor link for: footnotes&quot;&gt;Footnotes&lt;&#x2F;a&gt;&lt;&#x2F;h3&gt;
+&lt;ol id=&quot;references&quot;&gt;
+  &lt;li id=&quot;fn-1&quot;&gt;
+    &lt;ul style=&quot;padding-left: 0.5rem; list-style: none&quot;&gt;
+      &lt;li&gt;If we use slightly different distances than visualized - &lt;a href=&quot;https:&#x2F;&#x2F;byam.github.io&#x2F;assets&#x2F;img&#x2F;model-eval-val&#x2F;mean-squared-error.png&quot;&gt;the squared errors&lt;&#x2F;a&gt;, we are able to derive two &quot;simple&quot; formulas for ideal $m$ and $c$ beforehand:&lt;&#x2F;li&gt;
+      &lt;div style=&quot;overflow-x: auto;&quot;&gt;
+      $$m = \frac{n\sum(x_i y_i) - \sum x_i \sum y_i}{n\sum(x_i^2) - (\sum x_i)^2}$$
+      $$c = \frac{\sum y_i - m\sum x_i}{n}$$
+      &lt;&#x2F;div&gt;
+      &lt;li&gt;where $n$ is the number of data points, $\sum$ represents a summation of $x_i$&#x2F;$y_i$-coordinates of the given points. You can read more &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Simple_linear_regression&quot;&gt;here&lt;&#x2F;a&gt;, but beware, statistical terminology and equations can get really nasty 🤮.&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        
+    </entry>
+</feed>
